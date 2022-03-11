@@ -31,7 +31,21 @@ public class RestrictionCut {
         indexes.add(0);
         indexes.add(file.length() - 1);
         Collections.sort(indexes);
-        
+
         return indexes;
+    }
+
+    public static List<Integer> findMultiset(List<Integer> indexes) {
+        List<Integer> multiset = new ArrayList<>();
+
+        for (int i = 0; i < indexes.size(); i++) {
+            for (int j = i + 1; j < indexes.size(); j++) {
+                multiset.add(indexes.get(j) - indexes.get(i));
+            }
+        }
+
+        Collections.sort(multiset);
+
+        return multiset;
     }
 }
