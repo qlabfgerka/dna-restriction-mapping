@@ -48,4 +48,10 @@ public class RestrictionCut {
 
         return multiset;
     }
+
+    public static int calculateSize(int length) {
+        int D = (int) Math.sqrt(1 - 4 * (-2 * length));
+        int x1 = (1 + D) / 2, x2 = (1 - D) / 2;
+        return x1 > 0 ? x1 : x2;
+    }
 }
