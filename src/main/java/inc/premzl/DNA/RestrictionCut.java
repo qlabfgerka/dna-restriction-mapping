@@ -24,8 +24,8 @@ public class RestrictionCut {
     public static List<Integer> handleIndexes(String[] args, String file) {
         List<Integer> indexes = new ArrayList<>();
 
-        for (int i = 1; i < args.length; i++) {
-            indexes.addAll(findIndexes(file, args[i]));
+        for (String arg : args) {
+            indexes.addAll(findIndexes(file, arg));
         }
 
         indexes.add(0);
@@ -42,6 +42,18 @@ public class RestrictionCut {
             for (int j = i + 1; j < indexes.size(); j++) {
                 multiset.add(indexes.get(j) - indexes.get(i));
             }
+        }
+
+        Collections.sort(multiset);
+
+        return multiset;
+    }
+
+    public static List<Integer> findMultiset(Integer num, List<Integer> indexes) {
+        List<Integer> multiset = new ArrayList<>();
+
+        for (Integer index : indexes) {
+            multiset.add(Math.abs(index - num));
         }
 
         Collections.sort(multiset);
